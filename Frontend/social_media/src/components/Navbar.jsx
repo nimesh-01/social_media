@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { PlusCircle, User, LogIn, LogOut } from 'lucide-react';
 import axios from 'axios';
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const Navbar = () => {
     const { pathname } = useLocation();
@@ -38,7 +39,7 @@ const Navbar = () => {
     const handleAuthClick = async () => {
         if (isLoggedIn) {
             try {
-                await axios.get('http://localhost:3000/api/logout', {
+                await axios.get(`${backendUrl}/api/logout`, {
                     withCredentials: true,
                 });
                 setIsLoggedIn(false);

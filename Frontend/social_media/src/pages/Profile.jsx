@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import defaultProfile from "/default_profile_img.jpg";
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const Profile = () => {
   const [userData, setUserData] = useState(null);
@@ -15,7 +16,7 @@ const Profile = () => {
     const fetchUserData = async () => {
       try {
         setIsLoading(true);
-        const res = await axios.get("http://localhost:3000/api/user", {
+        const res = await axios.get(`${backendUrl}/api/user`, {
           withCredentials: true,
         });
 
@@ -59,7 +60,7 @@ const Profile = () => {
       setIsLoading(true);
 
       const res = await axios.post(
-        "http://localhost:3000/api/upload-profile-pic",
+       `${backendUrl}/api/upload-profile-pic`,
         formData,
         {
           withCredentials: true,
@@ -83,10 +84,10 @@ const Profile = () => {
 
   const handleDeletePost = async (postId) => {
     console.log(postId);
-    
+
     try {
       setIsLoading(true);
-      await axios.delete(`http://localhost:3000/api/posts/${postId}`, {
+      await axios.delete(`${backendUrl}/api/posts/${postId}`, {
         withCredentials: true,
       });
 

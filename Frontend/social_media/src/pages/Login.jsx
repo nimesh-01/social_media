@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const getCookie = (name) => {
   const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
@@ -19,7 +20,7 @@ const Login = () => {
     setLoginError({ email: "", password: "" });
 
     try {
-      await axios.post('http://localhost:3000/api/login', user, {
+      await axios.post(`${backendUrl}/api/login`, user, {
         withCredentials: true
       });
       toast.success("Login Successful!", { autoClose: 800 });

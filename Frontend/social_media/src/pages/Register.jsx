@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const getCookie = (name) => {
   const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
@@ -16,7 +17,7 @@ const Register = () => {
 
   const registerhandler = async (user) => {
     try {
-      await axios.post('http://localhost:3000/api/register', user, {
+      await axios.post(`${backendUrl}/api/register`, user, {
         withCredentials: true
       });
 

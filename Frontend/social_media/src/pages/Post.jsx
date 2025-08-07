@@ -3,6 +3,7 @@ import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const Post = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -46,7 +47,7 @@ const Post = () => {
     try {
       setIsLoading(true);
 
-      const res = await axios.post('http://localhost:3000/api/posts', formData, {
+      const res = await axios.post(`${backendUrl}/api/posts`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
         withCredentials: true,
       });

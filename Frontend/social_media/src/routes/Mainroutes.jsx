@@ -7,7 +7,6 @@ const Register = lazy(() => import('../pages/Register'))
 const Post = lazy(() => import('../pages/Post'))
 const Profile = lazy(() => import('../pages/Profile'))
 
-
 const mainroutes = () => {
     return (
         <Routes>
