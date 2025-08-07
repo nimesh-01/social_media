@@ -55,8 +55,6 @@ router.post('/register', async (req, res) => {
         user
     });
 });
-
-
 router.get('/user', authMiddleware, async (req, res) => {
     try {
         // User is already set on req.user by the auth middleware
