@@ -6,19 +6,9 @@ const router = require('./routes/auth.routes');
 const app = express();
 
 // ✅ Enable CORS for frontend with cookies
-const cors = require("cors");
-
 app.use(cors({
-  origin: "https://socialmediabynimesh.netlify.app", // your frontend domain
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  credentials: true
-}));
-
-// Explicitly handle preflight requests
-app.options("*", cors({
-  origin: "https://socialmediabynimesh.netlify.app",
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  credentials: true
+    origin: 'http://localhost:5173',  // Frontend URL
+    credentials: true                // Allow cookies & headers
 }));
 
 app.use(express.json());
