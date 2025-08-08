@@ -7,7 +7,7 @@ const app = express();
 
 // ✅ Enable CORS for frontend with cookies
 app.use(cors({
-    origin: 'http://localhost:5173',  // Frontend URL
+    origin: 'https://social-media-bynimesh.vercel.app',  // Frontend URL
     credentials: true                // Allow cookies & headers
 }));
 
