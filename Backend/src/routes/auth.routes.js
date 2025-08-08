@@ -46,8 +46,8 @@ router.post('/register', async (req, res) => {
 
     res.cookie("token", token, {
         httpOnly: true,
-        secure: false,
-        sameSite: 'lax'
+        secure: true,
+        sameSite: 'None'
     });
 
     res.status(201).json({
@@ -91,7 +91,11 @@ router.post('/login', async (req, res) => {
         })
     }
     const token = jwt.sign({ id: User._id }, process.env.JWT_SECRET)
-    res.cookie('token', token)
+    res.cookie("token", token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'None'
+    });
 
     res.status(200).json({
         message: "Login successfully"
@@ -112,7 +116,7 @@ router.post('/posts', authMiddleware, upload.single("Image"), async (req, res) =
         console.log(base64Image);
         const caption = await generateCaption(base64Image);
         if (caption == undefined) {
-           return res.status(404).json({
+            return res.status(404).json({
                 message: "Caption not generated"
             })
         }
